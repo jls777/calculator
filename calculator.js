@@ -11,6 +11,7 @@ let equals = document.querySelector('.equals');
 let currentValueContent = ''
 let previousValueContent = ''
 let operatorContent = ''
+
 numbers.forEach(num => {
   num.addEventListener('click', e => {
     currentValueContent += e.target.textContent; 
@@ -22,8 +23,18 @@ operator.forEach(o => {
   o.addEventListener('click', e => {
     operatorContent = e.target.textContent;
     previousValueContent = currentValueContent;
-    currentValueContent = '';
-    currentValue.textContent = '';
+    currentValueContent = ''; 
+    currentValue.textContent = currentValueContent;
     previousValue.textContent = previousValueContent + operatorContent;
   })
 })
+
+clear.addEventListener('click', e => {
+  currentValueContent = '';
+  previousValueContent = '';
+  operatorContent = '';
+  previousValue.textContent = previousValueContent;
+  currentValue.textContent = 0;
+})
+
+
