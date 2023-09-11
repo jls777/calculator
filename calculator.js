@@ -8,17 +8,20 @@ let del = document.querySelector('.del');
 let decimal = document.querySelector('.decimal');
 let equals = document.querySelector('.equals');
 // ---------------------------------------
+//-------variables------------------------
 let currentValueContent = ''
 let previousValueContent = ''
 let operatorContent = ''
-
+//------------------------------------
+//----------number---------------------------------
 numbers.forEach(num => {
   num.addEventListener('click', e => {
     currentValueContent += e.target.textContent; 
     currentValue.textContent = currentValueContent;
   })
 })
-
+//--------------------------------------
+//------------operator----------------------
 operator.forEach(o => {
   o.addEventListener('click', e => {
     operatorContent = e.target.textContent;
@@ -28,7 +31,8 @@ operator.forEach(o => {
     previousValue.textContent = previousValueContent + operatorContent;
   })
 })
-
+//------------------------------------------------
+//---------------clear-----------------------
 clear.addEventListener('click', e => {
   currentValueContent = '';
   previousValueContent = '';
@@ -36,11 +40,13 @@ clear.addEventListener('click', e => {
   previousValue.textContent = previousValueContent;
   currentValue.textContent = 0;
 })
-
+//--------------------------------------------------
+//-----------------del----------------------
 del.addEventListener('click', e => {
   currentValueContent = currentValueContent.substring(1);
   currentValue.textContent = currentValueContent;
 })
+//----------------------------------
 
 
 
