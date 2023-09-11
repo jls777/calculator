@@ -37,4 +37,10 @@ clear.addEventListener('click', e => {
   currentValue.textContent = 0;
 })
 
+del.addEventListener('click', e => {
+  currentValueContent = currentValueContent.substring(1);
+  currentValue.textContent = currentValueContent;
+})
+
+
 
