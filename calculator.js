@@ -38,15 +38,31 @@ clear.addEventListener('click', e => {
   previousValueContent = '';
   operatorContent = '';
   previousValue.textContent = previousValueContent;
-  currentValue.textContent = 0;
+  currentValue.textContent = '0';
 })
 //--------------------------------------------------
 //-----------------del----------------------
 del.addEventListener('click', e => {
+  if (currentValueContent.length === 1 && currentValueContent === '0') return;
+  if (currentValueContent === '') return;
+  if (currentValueContent.length === 1) {
+    currentValueContent = currentValueContent.substring(1);
+    currentValue.textContent = '0';
+    return;
+  }
   currentValueContent = currentValueContent.substring(1);
   currentValue.textContent = currentValueContent;
 })
 //----------------------------------
-
-
-
+//------------decimal----------------------
+decimal.addEventListener('click', e => {
+  if (currentValueContent.includes('.')) return;
+  if (currentValueContent === '') {
+    currentValueContent += '0' +e.target.textContent;
+    currentValue.textContent = currentValueContent;
+    return;
+  }
+  currentValueContent += e.target.textContent;
+  currentValue.textContent = currentValueContent;
+})
+//--------------------------------------
