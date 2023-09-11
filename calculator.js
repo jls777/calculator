@@ -9,11 +9,17 @@ let decimal = document.querySelector('.decimal');
 let equals = document.querySelector('.equals');
 // ---------------------------------------
 let currentValueContent = ''
-
+let previousValueContent = ''
 numbers.forEach(num => {
   num.addEventListener('click', e => {
     currentValueContent += e.target.textContent; 
-    currentValue.textContent = currentValueContent
+    currentValue.textContent = currentValueContent;
   })
 })
 
+operator.forEach(o => {
+  o.addEventListener('click', e => {
+  operator = e.target.textContent;
+  console.log(operator);
+  })
+})
