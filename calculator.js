@@ -106,6 +106,7 @@ function operate() {
       break;
     case '-':
       previousValueContent -= currentValueContent;
+      
       break;
   }
   currentValueContent = currentValueContent.toString();
