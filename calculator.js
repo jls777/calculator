@@ -24,12 +24,23 @@ numbers.forEach(num => {
 //------------operator----------------------
 operator.forEach(o => {
   o.addEventListener('click', e => {
-    if (currentValueContent === '') currentValueContent = previousValueContent;
     operatorContent = e.target.textContent;
-    previousValueContent = currentValueContent;
-    currentValueContent = ''; 
-    currentValue.textContent = '';
-    previousValue.textContent = previousValueContent + operatorContent;
+    if (currentValue.textContent !== '' && previousValue.textContent !== '') {
+      operate();
+      currentValueContent = '';
+      currentValue.textContent = '';
+      previousValue.textContent = previousValueContent + operatorContent;
+    } else if (currentValueContent !== '') {
+      previousValueContent = currentValueContent;
+      currentValueContent = ''; 
+      currentValue.textContent = '';
+      previousValue.textContent = previousValueContent + operatorContent;
+    } else if (currentValueContent === '') {
+      previousValueContent = previousValueContent;
+      currentValueContent = ''; 
+      currentValue.textContent = '';
+      previousValue.textContent = previousValueContent + operatorContent;
+    } 
   })
 })
 //------------------------------------------------
