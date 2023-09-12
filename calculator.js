@@ -16,6 +16,9 @@ let operatorContent = ''
 //----------number---------------------------------
 numbers.forEach(num => {
   num.addEventListener('click', e => {
+    if (currentValueContent.length > 7) {
+      currentValue.style['font-size'] = '50px';
+    }
     currentValueContent += e.target.textContent; 
     currentValue.textContent = currentValueContent;
   })
@@ -56,7 +59,7 @@ clear.addEventListener('click', e => {
 //--------------------------------------------------
 //-----------------del----------------------
 del.addEventListener('click', e => {
-  if (currentValueContent.length <= 8) currentValue.removeAttribute('style');
+  if (currentValueContent.length <= 9) currentValue.removeAttribute('style');
   if (currentValueContent.length === 1 && currentValueContent === '0') return;
   if (currentValueContent === '') return;
   if (currentValueContent.length === 1) {
