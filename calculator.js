@@ -16,9 +16,6 @@ let operatorContent = ''
 //----------number---------------------------------
 numbers.forEach(num => {
   num.addEventListener('click', e => {
-    if (currentValueContent.length >= 7) {
-      currentValue.style['font-size'] = '50px';
-    } 
     currentValueContent += e.target.textContent; 
     currentValue.textContent = currentValueContent;
   })
@@ -27,6 +24,7 @@ numbers.forEach(num => {
 //------------operator----------------------
 operator.forEach(o => {
   o.addEventListener('click', e => {
+    if (currentValueContent === '') currentValueContent = previousValueContent;
     operatorContent = e.target.textContent;
     previousValueContent = currentValueContent;
     currentValueContent = ''; 
@@ -73,11 +71,13 @@ decimal.addEventListener('click', e => {
 //--------------------------------------
 
 equals.addEventListener('click', e => {
-  operate(currentValueContent, previousValueContent);
+  operate();
+  previousValue.textContent = '';
+  currentValue.textContent = previousValueContent;
   currentValueContent = '';
 })
 
-function operate(currentValueContent, previousValueContent) {
+function operate() {
   currentValueContent = Number(currentValueContent);
   previousValueContent = Number(previousValueContent);
   switch (operatorContent) {
@@ -94,6 +94,7 @@ function operate(currentValueContent, previousValueContent) {
       previousValueContent -= currentValueContent;
       break;
   }
-  previousValue.textContent = '';
-  currentValue.textContent = previousValueContent;
+  currentValueContent = currentValueContent.toString();
+  previousValueContent = previousValueContent.toString();
+ 
 }
