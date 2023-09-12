@@ -21,6 +21,11 @@ numbers.forEach(num => {
     }
     currentValueContent += e.target.textContent; 
     currentValue.textContent = currentValueContent;
+    if (previousValue.textContent !== '') {
+      operate();
+
+      return
+    }
   })
 })
 //--------------------------------------
@@ -29,7 +34,6 @@ operator.forEach(o => {
   o.addEventListener('click', e => {
     operatorContent = e.target.textContent;
     if (currentValue.textContent !== '' && previousValue.textContent !== '') {
-      operate();
       currentValueContent = '';
       currentValue.textContent = '';
       previousValue.textContent = previousValueContent + operatorContent;
@@ -85,7 +89,6 @@ decimal.addEventListener('click', e => {
 //--------------------------------------
 
 equals.addEventListener('click', e => {
-  operate();
   previousValue.textContent = '';
   currentValue.textContent = previousValueContent;
   currentValueContent = '';
