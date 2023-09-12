@@ -83,23 +83,17 @@ function operate(currentValueContent, previousValueContent) {
   switch (operatorContent) {
     case 'x':
       previousValueContent *= currentValueContent;
-      previousValue.textContent = '';
-      currentValue.textContent = previousValueContent;
       break;
     case '÷':
       previousValueContent /= currentValueContent;
-      previousValue.textContent = '';
-      currentValue.textContent = previousValueContent;
       break;
     case '+':
       previousValueContent += currentValueContent;
-      previousValue.textContent = '';
-      currentValue.textContent = previousValueContent;
       break;
     case '-':
       previousValueContent -= currentValueContent;
-      previousValue.textContent = '';
-      currentValue.textContent = previousValueContent;
       break;
   }
+  previousValue.textContent = '';
+  currentValue.textContent = previousValueContent;
 }
