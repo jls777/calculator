@@ -30,13 +30,14 @@ operator.forEach(o => {
     operatorContent = e.target.textContent;
     previousValueContent = currentValueContent;
     currentValueContent = ''; 
-    currentValue.textContent = currentValueContent;
+    currentValue.textContent = '';
     previousValue.textContent = previousValueContent + operatorContent;
   })
 })
 //------------------------------------------------
 //---------------clear-----------------------
 clear.addEventListener('click', e => {
+  currentValue.removeAttribute('style');
   currentValueContent = '';
   previousValueContent = '';
   operatorContent = '';
@@ -70,3 +71,35 @@ decimal.addEventListener('click', e => {
   currentValue.textContent = currentValueContent;
 })
 //--------------------------------------
+
+equals.addEventListener('click', e => {
+  operate(currentValueContent, previousValueContent);
+  currentValueContent = '';
+})
+
+function operate(currentValueContent, previousValueContent) {
+  currentValueContent = Number(currentValueContent);
+  previousValueContent = Number(previousValueContent);
+  switch (operatorContent) {
+    case 'x':
+      previousValueContent *= currentValueContent;
+      previousValue.textContent = '';
+      currentValue.textContent = previousValueContent;
+      break;
+    case '÷':
+      previousValueContent /= currentValueContent;
+      previousValue.textContent = '';
+      currentValue.textContent = previousValueContent;
+      break;
+    case '+':
+      previousValueContent += currentValueContent;
+      previousValue.textContent = '';
+      currentValue.textContent = previousValueContent;
+      break;
+    case '-':
+      previousValueContent -= currentValueContent;
+      previousValue.textContent = '';
+      currentValue.textContent = previousValueContent;
+      break;
+  }
+}
